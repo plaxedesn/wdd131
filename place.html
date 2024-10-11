@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Zimbabwe</h1>
+        <picture>
+            <source srcset="hero-small.webp 480w, hero-medium.webp 800w, hero-large.webp 1200w" sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 100vw" type="image/webp">
+            <img src="images/harare-hero.webp" alt="Harare" style="width: 100%; border-radius: 8px;">
+        </picture>
+        <div class="data">
+            <h2>Data</h2>
+            <p>Population: 16,320,000</p>
+            <p>Area: 399,757 km²</p>
+            <p>Capital: Harare</p>
+            <p>Languages: Shona, Ndebele, English, and more</p>
+            <p>Timezone: Central Africa Time</p>
+            <p>GMT: +2</p>
+            <p>Calling Code: +263</p>
+            <p>Internet TLD: .zw</p>
+        </div>
+        <div class="weather">
+            <h2>Weather ⛅</h2>
+            <p id="temperature">Temperature: 25°C</p>
+            <p id="conditions">Conditions: Sunny</p>
+            <p id="wind">Wind: 14 km/h</p>
+            <p id="windChill">Wind Chill: <span>N/A</span></p>
+            <img id="weatherIcon" src="weather-icon.svg" alt="Weather Icon" style="display: none;">
+        </div>
+    <footer>
+        <p id="copyright"></p> 
+        <p id="lastModified"></p> 
+    </footer>
+    
+    
+</body>
+</html>
