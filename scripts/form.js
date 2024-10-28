@@ -39,4 +39,11 @@ document.getElementById('reviewForm').addEventListener('submit', function(event)
 window.onload = function() {
     const reviewCount = localStorage.getItem('reviewCount') || 0;
     document.getElementById('reviewCount').textContent = reviewCount;
+}),
+const currentYear = new Date().getFullYear();
+  document.getElementById('copyright').textContent =
+    `© ${currentYear} Plaxedes Ncube`;
+
+  document.getElementById('lastModified').textContent =
+    `Last Modified: ${document.lastModified}`;
 };
