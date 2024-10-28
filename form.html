@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<h1>Product Review Form</h1>
+<form id="reviewForm">
+    <label for="productName">Product Name</label>
+    <select id="productName" name="productName" required></select>
+
+    <label>Overall Rating</label>
+    <div class="star-rating" id="starRating">
+        <span class="star" data-value="1">&star;</span>
+        <span class="star" data-value="2">&star;</span>
+        <span class="star" data-value="3">&star;</span>
+        <span class="star" data-value="4">&star;</span>
+        <span class="star" data-value="5">&star;</span>
+    </div>
+    <input type="hidden" id="rating" name="rating" required>
+
+    <label for="installationDate">Date of Installation</label>
+    <input type="date" id="installationDate" name="installationDate" required>
+
+    <label>Useful Features (check all that apply)</label>
+    <label><input type="checkbox" id="feature1" name="features" value="Feature 1"> Feature 1</label>
+    <label><input type="checkbox" id="feature2" name="features" value="Feature 2"> Feature 2</label>
+    <label><input type="checkbox" id="feature3" name="features" value="Feature 3"> Feature 3</label>
+
+    <label for="review">Written Review</label>
+    <textarea id="review" name="review" rows="4"></textarea>
+
+    <label for="userName">User Name (optional)</label>
+    <input type="text" id="userName" name="userName">
+
+    <button type="submit">Submit Review</button>
+</form>
+
+<div id="confirmation" style="display:none;">
+    <h2>Thank You for Your Review!</h2>
+    <p>Your review has been submitted successfully.</p>
+    <p>You have submitted <span id="reviewCount">0</span> reviews so far.</p>
+</div>
+
+<script src="script.js"></script>
+<footer>
+    <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
