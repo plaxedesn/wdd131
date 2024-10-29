@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H20.COM - Order Water Delivery</title>
+    <meta name="description" content="Order your clean water online at H20.COM anytime,">
+    <meta name="author" content="Plaxedes Ncube">
+    <link rel="stylesheet" href="styles/project.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <img src="images/logo.jpg" alt="H20 Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="project.html">Home</a></li>
+                <li><a href="order.html" class="active">Order Now</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="order-section">
+            <h2>Order Water NOW & PAY Upon Delivery</h2>
+            <p>Fill out the form below to schedule your water delivery.</p>
+
+            <form id="orderForm" aria-label="Order Form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+                <label for="address">Delivery Address:</label>
+                <textarea id="address" name="address" rows="2" required placeholder="Enter your delivery address"></textarea>
+
+                <label for="product">Select Water Product:</label>
+                <select id="product" name="product" required>
+                    <option value="" disabled selected>Select a product</option>
+                    <option value="bottle">Bottled Water (1L)</option>
+                    <option value="dispenser">Water Dispenser (5L)</option>
+                    <option value="bulk">Tank filling (1000L or more)</option>
+                </select>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required placeholder="Enter quantity">
+
+                <div class="summary">
+                    <h3>Product Pricing</h3>
+                    <ul>
+                        <li>Bottled Water (1L): <strong>$0.50 each</strong></li>
+                        <li>Water Dispenser (5L): <strong>$2.00 each</strong></li>
+                        <li>Tank Filling (1000L): <strong>$10 per 1000L</strong></li>
+                    </ul>
+                </div>
+
+                <button type="submit">Place Order</button>
+            </form>
+
+            <div id="orderConfirmation" class="hidden" role="alert">
+                <p>Your order has been placed successfully! Thank you for choosing H20.COM.</p>
+            </div>
+        </section>
+    </main>
+
+<footer>
+    <p id="copyright"></p> 
+    <p id="lastModified"></p> 
+</footer>
+
+</body>
+</html>
