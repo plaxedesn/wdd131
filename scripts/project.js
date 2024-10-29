@@ -2,19 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderForm = document.getElementById('orderForm');
     const confirmationMessage = document.getElementById('orderConfirmation');
 
-    orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        saveOrderToLocalStorage();
-        showConfirmation();
-    });
+    if (orderForm) {
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            saveOrderToLocalStorage();
+            showConfirmation();
+        });
+    }
 
     function saveOrderToLocalStorage() {
-        const name = document.getElementById('name').value;
-        const address = document.getElementById('address').value;
-        const product = document.getElementById('product').value;
-        const quantity = document.getElementById('quantity').value;
-
-        const orderData = { name, address, product, quantity };
+        const orderData = {
+            name: document.getElementById('name').value,
+            address: document.getElementById('address').value,
+            product: document.getElementById('product').value,
+            quantity: document.getElementById('quantity').value,
+        };
         localStorage.setItem('order', JSON.stringify(orderData));
     }
 
