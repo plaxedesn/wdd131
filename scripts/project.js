@@ -1,37 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
+    setupCopyrightAndLastModified();
+    setupNavigationHighlight();
+    lazyLoadImages();
+    handlePageSpecificLogic();
+});
+
+function setupCopyrightAndLastModified() {
     const currentYear = new Date().getFullYear();
     const lastModified = document.lastModified;
+    document.getElementById('footer').innerHTML = `
+        <p>© ${currentYear} Plaxedes Ncube</p>
+        <p>Last Modified: ${lastModified}</p>
+    `;
+}
 
-    document.getElementById('copyright').textContent = currentYear;
-    document.getElementById('lastModified').textContent = lastModified;
-
-    const services = [
-        'Home and office delivery',
-        'Flexible subscription plans',
-        'High-quality bottled and bulk water options'
-    ];
-
-    const servicesList = document.getElementById('services-list');
-    services.forEach(service => {
-        const listItem = document.createElement('li');
-        listItem.textContent = service;
-        servicesList.appendChild(listItem);
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.addEventListener('load', () => {
+            console.log(`Image ${img.src} has been lazy-loaded.`);
+        });
     });
+}
 
-    if (window.location.pathname.includes('order.html')) {
-        setupOrderForm();
-    }
-});
+function setupNavigationHighlight() {
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPath = window.location.pathname;
+    navLinks.forEach(link => {
+        if (link.href.includes(currentPath)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+function handlePageSpecificLogic() {
+    const path = window.location.pathname;
+    if (path.includes('order.html')) setupOrderForm();
+    if (path.includes('contact.html')) setupContactForm();
+}
 
 function setupOrderForm() {
     const orderForm = document.getElementById('orderForm');
     const confirmationMessage = document.getElementById('orderConfirmation');
-
     orderForm.addEventListener('submit', event => {
         event.preventDefault();
         const orderData = collectOrderData();
-        saveOrder(orderData);
-        displayConfirmation(confirmationMessage);
+        saveDataToLocalStorage('orders', orderData);
+        displayConfirmation(confirmationMessage, 'Order placed successfully!');
     });
 }
 
@@ -44,13 +59,33 @@ function collectOrderData() {
     };
 }
 
-function saveOrder(order) {
-    const orders = JSON.parse(localStorage.getItem('orders')) || [];
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
+function setupContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    const confirmationMessage = document.getElementById('contactConfirmation');
+    contactForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const contactData = collectContactData();
+        saveDataToLocalStorage('contactMessages', contactData);
+        displayConfirmation(confirmationMessage, 'Message sent successfully!');
+    });
 }
 
-function displayConfirmation(confirmationMessage) {
-    confirmationMessage.classList.remove('hidden');
-    document.getElementById('orderForm').reset();
+function collectContactData() {
+    return {
+        name: document.getElementById('contactName').value,
+        email: document.getElementById('contactEmail').value,
+        message: document.getElementById('contactMessage').value
+    };
+}
+
+function saveDataToLocalStorage(key, data) {
+    const existingData = JSON.parse(localStorage.getItem(key)) || [];
+    existingData.push(data);
+    localStorage.setItem(key, JSON.stringify(existingData));
+}
+
+function displayConfirmation(element, message) {
+    element.textContent = message;
+    element.classList.remove('hidden');
+    element.closest('form').reset();
 }
