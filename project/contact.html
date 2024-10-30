@@ -6,16 +6,6 @@
     <title>H20.COM - Order Now</title>
     <link rel="stylesheet" href="styles/project.css">
     <script src="scripts/project.js" defer></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Get the last modified date and time
-            const lastModified = document.lastModified;
-            document.getElementById("lastModified").textContent = lastModified;
-            // Get the current year for copyright
-            const currentYear = new Date().getFullYear();
-            document.getElementById("copyright").textContent = currentYear;
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -50,22 +40,26 @@
         </section>
 
         <section class="review-section">
-            <h2>Product Review</h2>
-            <form id="reviewForm">
-                <input type="text" id="reviewerName" placeholder="Your Name" required>
-                <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
-                <label for="rating">Rating:</label>
-                <select id="rating" required>
-                    <option value="5">5 - Excellent</option>
-                    <option value="4">4 - Good</option>
-                    <option value="3">3 - Average</option>
-                    <option value="2">2 - Poor</option>
-                    <option value="1">1 - Terrible</option>
-                </select>
-                <button type="submit">Submit Review</button>
-            </form>
-            <p id="reviewConfirmation" class="hidden">Thank you for your review!</p>
-        </section>
+    <h2>Product Review</h2>
+    <form id="reviewForm">
+        <input type="text" id="reviewerName" placeholder="Your Name" required>
+        <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
+        <div class="star-rating">
+            <input type="radio" id="star5" name="rating" value="5" required>
+            <label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1">★</label>
+        </div>
+        <button type="submit">Submit Review</button>
+    </form>
+    <p id="reviewConfirmation" class="hidden">Thank you for your review!</p>
+</section>
     </main>
 
     <footer>
