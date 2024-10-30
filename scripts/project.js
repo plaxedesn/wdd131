@@ -7,10 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupFooter() {
     const currentYear = new Date().getFullYear();
-    document.getElementById('footer').innerHTML = `
-        <p>© ${currentYear} Plaxedes Ncube</p>
-        <p>Last Modified: ${document.lastModified}</p>
-    `;
+    document.getElementById('copyright').textContent = `© ${currentYear} Plaxedes Ncube`;
+    document.getElementById('lastModified').textContent = `Last Modified: ${document.lastModified}`;
 }
 
 function handleForms() {
