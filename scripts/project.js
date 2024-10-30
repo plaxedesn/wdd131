@@ -16,6 +16,7 @@ function setupFooter() {
 function handleForms() {
     document.getElementById('orderForm')?.addEventListener('submit', handleOrder);
     document.getElementById('reviewForm')?.addEventListener('submit', handleReview);
+    document.getElementById('contactForm')?.addEventListener('submit', handleContact);
 }
 
 function handleOrder(event) {
@@ -30,6 +31,13 @@ function handleReview(event) {
     const reviewData = collectReviewData();
     saveToLocalStorage('reviews', reviewData);
     showConfirmation('reviewConfirmation');
+}
+
+function handleContact(event) {
+    event.preventDefault();
+    const contactData = collectContactData();
+    saveToLocalStorage('contacts', contactData);
+    showConfirmation('contactConfirmation');
 }
 
 function collectOrderData() {
@@ -47,6 +55,14 @@ function collectReviewData() {
         name: document.getElementById('reviewerName').value,
         message: document.getElementById('reviewText').value,
         rating: rating
+    };
+}
+
+function collectContactData() {
+    return {
+        name: document.getElementById('contactName').value,
+        email: document.getElementById('contactEmail').value,
+        message: document.getElementById('contactMessage').value
     };
 }
 
