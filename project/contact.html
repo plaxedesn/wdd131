@@ -3,68 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H20.COM - Order Now</title>
+    <title>H2O.COM - Contact Us</title>
     <link rel="stylesheet" href="styles/project.css">
     <script src="scripts/project.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <img src="images/logo.jpg" alt="H20 Logo" class="logo" loading="lazy">
-            <h1 class="site-name">H20.COM</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="project.html">Home</a></li>
-                <li><a href="order.html">Order Now</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="order-section">
-            <h2>Place Your Order</h2>
-            <form id="orderForm">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="text" id="address" placeholder="Delivery Address" required>
-                <select id="product" required>
-                    <option value="bottle">Bottled Water (1L) - $1.50</option>
-                    <option value="dispenser">Water Dispenser (5L) - $10.00</option>
-                    <option value="bulk">Tank Filling (1000L or more) - $0.50 per liter</option>
-                </select>
-                <input type="number" id="quantity" placeholder="Quantity" required>
-                <button type="submit">Submit Order</button>
-            </form>
-            <p id="orderConfirmation" class="hidden">Order placed successfully!</p>
-        </section>
+<header>
+    <img src="images/logo.jpg" alt="H2O.COM Logo" class="logo">
+    <nav>
+        <ul>
+            <li><a href="project.html">Home</a></li>
+            <li><a href="order.html">Order Now</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <section class="review-section">
-    <h2>Product Review</h2>
-    <form id="reviewForm">
-        <input type="text" id="reviewerName" placeholder="Your Name" required>
-        <textarea id="reviewText" placeholder="Write your review here..." required></textarea>
-        <div class="star-rating">
-            <input type="radio" id="star5" name="rating" value="5" required>
-            <label for="star5">★</label>
-            <input type="radio" id="star4" name="rating" value="4">
-            <label for="star4">★</label>
-            <input type="radio" id="star3" name="rating" value="3">
-            <label for="star3">★</label>
-            <input type="radio" id="star2" name="rating" value="2">
-            <label for="star2">★</label>
-            <input type="radio" id="star1" name="rating" value="1">
-            <label for="star1">★</label>
-        </div>
-        <button type="submit">Submit Review</button>
-    </form>
-    <p id="reviewConfirmation" class="hidden">Thank you for your review!</p>
-</section>
-    </main>
+<main>
+    <section class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out!</p>
+        <form id="contactForm">
+            <input type="text" id="contactName" placeholder="Your Name" required>
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+            <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="contactConfirmation" class="hidden">Thank you for reaching out!</p>
+    </section>
+</main>
 
-    <footer>
-        <p>&copy; <span id="copyright"></span> Plaxedes Ncube</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
-    </footer>
+<footer id="footer"></footer>
+
 </body>
 </html>
