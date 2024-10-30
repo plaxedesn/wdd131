@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H20.COM - Home</title>
-    <meta name="description" content="Book your water now and pay upon delivery. H20.COM delivers clean water everywhere and anytime.">
-    <meta name="author" content="Plaxedes Ncube">
+    <title>H2O.COM - Pure Water, Anytime, Anywhere</title>
     <link rel="stylesheet" href="styles/project.css">
     <script src="scripts/project.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <img src="images/logo.jpg" alt="H20 Logo" class="logo" loading="lazy">
-            <h1 class="site-name">H20.COM</h1>
+
+<header>
+    <img src="images/logo.jpg" alt="H2O.COM Logo" class="logo">
+    <nav>
+        <ul>
+            <li><a href="project.html" class="active">Home</a></li>
+            <li><a href="order.html">Order Now</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pure Water, Anytime, Anywhere</h1>
+            <p>Stay refreshed with H2O.COM - reliable delivery, high-quality water at your convenience.</p>
+            <a href="order.html" class="btn">Place Your Order Now</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="project.html">Home</a></li>
-                <li><a href="order.html">Order Now</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+        <img src="images/water.jpg" alt="Water Delivery" class="hero-image" loading="lazy">
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Pure Water, Anytime, Anywhere</h1>
-                <p>Reliable delivery of high-quality water at your convenience. Stay hydrated with H20.COM.</p>
-                <a href="order.html" class="btn">Place Your Order Now</a>
-            </div>
-            <img src="images/water.jpg" alt="Water bottles ready for delivery" class="hero-image" loading="lazy">
-        </section>
+    <section class="services">
+        <h2>Our Services</h2>
+        <ul id="services-list"></ul>
+    </section>
+</main>
 
-        <section class="features">
-            <h2>Our Services</h2>
-            <ul id="services-list"></ul>
-        </section>
-    </main>
+<footer id="footer"></footer>
 
-    <footer>
-        <p>&copy; <span id="copyright"></span> Plaxedes Ncube</p>
-        <p>Last Modified: <span id="lastModified"></span></p>
-    </footer>
 </body>
 </html>
