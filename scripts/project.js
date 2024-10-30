@@ -1,53 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    setupCopyrightAndLastModified();
-    setupNavigationHighlight();
-    lazyLoadImages();
-    handlePageSpecificLogic();
+    setupFooter();
+    handleForms();
+    populateServices();
 });
 
-function setupCopyrightAndLastModified() {
+function setupFooter() {
     const currentYear = new Date().getFullYear();
-    const lastModified = document.lastModified;
     document.getElementById('footer').innerHTML = `
         <p>© ${currentYear} Plaxedes Ncube</p>
-        <p>Last Modified: ${lastModified}</p>
+        <p>Last Modified: ${document.lastModified}</p>
     `;
 }
 
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.addEventListener('load', () => {
-            console.log(`Image ${img.src} has been lazy-loaded.`);
-        });
-    });
+function handleForms() {
+    document.getElementById('orderForm')?.addEventListener('submit', handleOrder);
+    document.getElementById('reviewForm')?.addEventListener('submit', handleReview);
 }
 
-function setupNavigationHighlight() {
-    const navLinks = document.querySelectorAll('nav a');
-    const currentPath = window.location.pathname;
-    navLinks.forEach(link => {
-        if (link.href.includes(currentPath)) {
-            link.classList.add('active');
-        }
-    });
+function handleOrder(event) {
+    event.preventDefault();
+    const orderData = collectOrderData();
+    saveToLocalStorage('orders', orderData);
+    showConfirmation('orderConfirmation');
 }
 
-function handlePageSpecificLogic() {
-    const path = window.location.pathname;
-    if (path.includes('order.html')) setupOrderForm();
-    if (path.includes('contact.html')) setupContactForm();
-}
-
-function setupOrderForm() {
-    const orderForm = document.getElementById('orderForm');
-    const confirmationMessage = document.getElementById('orderConfirmation');
-    orderForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const orderData = collectOrderData();
-        saveDataToLocalStorage('orders', orderData);
-        displayConfirmation(confirmationMessage, 'Order placed successfully!');
-    });
+function handleReview(event) {
+    event.preventDefault();
+    const reviewData = collectReviewData();
+    saveToLocalStorage('reviews', reviewData);
+    showConfirmation('reviewConfirmation');
 }
 
 function collectOrderData() {
@@ -55,37 +36,38 @@ function collectOrderData() {
         name: document.getElementById('name').value,
         address: document.getElementById('address').value,
         product: document.getElementById('product').value,
-        quantity: parseInt(document.getElementById('quantity').value, 10)
+        quantity: parseInt(document.getElementById('quantity').value)
     };
 }
 
-function setupContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    const confirmationMessage = document.getElementById('contactConfirmation');
-    contactForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const contactData = collectContactData();
-        saveDataToLocalStorage('contactMessages', contactData);
-        displayConfirmation(confirmationMessage, 'Message sent successfully!');
-    });
-}
-
-function collectContactData() {
+function collectReviewData() {
     return {
-        name: document.getElementById('contactName').value,
-        email: document.getElementById('contactEmail').value,
-        message: document.getElementById('contactMessage').value
+        name: document.getElementById('reviewerName').value,
+        product: document.getElementById('reviewProduct').value,
+        message: document.getElementById('reviewMessage').value
     };
 }
 
-function saveDataToLocalStorage(key, data) {
-    const existingData = JSON.parse(localStorage.getItem(key)) || [];
-    existingData.push(data);
-    localStorage.setItem(key, JSON.stringify(existingData));
+function saveToLocalStorage(key, data) {
+    const existing = JSON.parse(localStorage.getItem(key)) || [];
+    existing.push(data);
+    localStorage.setItem(key, JSON.stringify(existing));
 }
 
-function displayConfirmation(element, message) {
-    element.textContent = message;
-    element.classList.remove('hidden');
-    element.closest('form').reset();
+function showConfirmation(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function populateServices() {
+    const services = [
+        'Home and office delivery',
+        'Flexible subscription plans',
+        'High-quality bottled and bulk water options'
+    ];
+    const list = document.getElementById('services-list');
+    services.forEach(service => {
+        const item = document.createElement('li');
+        item.textContent = service;
+        list.appendChild(item);
+    });
 }
