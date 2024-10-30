@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFooter();
     handleForms();
     populateServices();
+    setupStarRatings();
 });
 
 function setupFooter() {
@@ -41,10 +42,11 @@ function collectOrderData() {
 }
 
 function collectReviewData() {
+    const rating = document.querySelector('input[name="rating"]:checked').value;
     return {
         name: document.getElementById('reviewerName').value,
-        product: document.getElementById('reviewProduct').value,
-        message: document.getElementById('reviewMessage').value
+        message: document.getElementById('reviewText').value,
+        rating: rating
     };
 }
 
@@ -69,5 +71,22 @@ function populateServices() {
         const item = document.createElement('li');
         item.textContent = service;
         list.appendChild(item);
+    });
+}
+
+function setupStarRatings() {
+    const stars = document.querySelectorAll('.star-rating input');
+    stars.forEach(star => {
+        star.addEventListener('change', () => {
+            const ratingValue = star.value;
+            highlightStars(ratingValue);
+        });
+    });
+}
+
+function highlightStars(ratingValue) {
+    const stars = document.querySelectorAll('.star-rating label');
+    stars.forEach((star, index) => {
+        star.style.color = index < ratingValue ? 'gold' : 'lightgray';
     });
 }
